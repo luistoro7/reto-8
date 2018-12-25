@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reto8</title>
+</head>
+<body>
+    <p>
+        <input type="button" value="añadir" id="anadir">
+        document.write
+    </p>
+
+    <script>
+        class caja {
+
+constructor(Valor1,Valor2,Valor3,Valor4){
+    this.Valor1=Valor1;
+    this.Valor2=Valor2;
+    this.Valor3=Valor3;
+    this.Valor4=Valor4;
+
+}
+}
+var regalos = [];
+var ordenados = [];
+
+regalos.push ( new caja("CajaA",100,40,0));
+regalos.push ( new caja("CajaB",20,10,0));
+regalos.push ( new caja("CajaC",40,120,0));
+regalos.push ( new caja("CajaD",20,20,0));
+regalos.push ( new caja("CajaE",10,10,0));
+
+max_cap = 150;
+
+var div=0;
+var r =0;
+var contador =0;
+var sp=0;
+var sd=0;
+var lista=" ";
+
+function procesar()
+{
+for (var bi of regalos)
+{
+ r= (bi.Valor3/bi.Valor2);
+ 
+ bi.Valor4=r;
+ console.log(bi);   
+    
+}
+
+console.log(regalos.sort(function (prev, next) {
+
+    return prev.Valor4 - next.Valor4;
+  }));
+
+
+for (var ci of regalos){
+    
+    if (contador <= 1) {
+
+        sp=sp+ci.Valor3;
+        sd=sd+ci.Valor2;
+        lista=lista+ci.Valor1;
+    
+        if (sp > max_cap) {
+            sp=sp-ci.Valor3;
+            sd=sd-ci.Valor2;
+            lista=lista-ci.Valor1;
+            
+            contador=contador+1;
+            
+        } else {
+            
+            contador=0;
+            
+        }
+    
+    } else {
+        sp=sp-ci.Valor3;
+        sd=sd-ci.Valor2;
+        lista=lista-ci.Valor1;
+        break;
+        
+    }
+}
+
+console.log("Total pesos = "+sp);
+console.log("Total dinero = "+sd);
+console.log("Lista de regalos : "+lista);
+
+   
+    
+}
+
+
+var b = document.getElementById("anadir");
+
+b.addEventListener("click", procesar);
+
+    
+    </script>
+</body>
+</html>
